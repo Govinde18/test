@@ -23,6 +23,6 @@ desired_cells = st.number_input("Desired number of cells:", min_value=0.0, step=
 if st.button("Calculate"):
     result = calculate_broth_volume(optical_density, cells_per_ml, desired_cells)
     if result is not None:
-        st.success(f"Volume of broth to be added (ml): {result:.3f}")
+        st.success(f"Volume of broth to be added (ml): {result:.5f}")
     else:
         st.error("Please enter valid numbers.")
