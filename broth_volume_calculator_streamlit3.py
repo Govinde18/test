@@ -17,7 +17,7 @@ def calculate_broth_volume(optical_density, cells_per_ml, desired_cells):
 st.title("Broth Volume Calculator")
 
 optical_density = st.number_input("Optical density at 600nm:", min_value=0.0, step=0.001, format="%.5f")
-cells_per_ml = st.number_input("Cells per ml:", min_value=0.0, step=10.0, format="%.10f")
+cells_per_ml = st.number_input("Cells per ml:", min_value=0.0, step=10.0)
 desired_cells = st.number_input("Desired number of cells:", min_value=0.0, step=1.0)
 
 if st.button("Calculate"):
