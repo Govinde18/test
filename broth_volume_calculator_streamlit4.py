@@ -6,7 +6,7 @@ def calculate_broth_volume(optical_density, desired_cells):
         remaining_broth_ml = 0.9
 
         # Calculation
-        cells_per_ml = optical_density * 800000000
+        cells_per_ml = optical_density * 80000000
         total_cells = cells_per_ml * remaining_broth_ml
         needed_broth_ml = (desired_cells * remaining_broth_ml) / total_cells 
 
