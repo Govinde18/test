@@ -6,6 +6,7 @@ def calculate_broth_volume(optical_density, cells_per_ml, desired_cells):
         remaining_broth_ml = 0.9
 
         # Calculation
+        cells_per_ml = optical_density * 800000000
         total_cells = cells_per_ml * remaining_broth_ml
         needed_broth_ml = (desired_cells * remaining_broth_ml) / total_cells 
 
@@ -20,7 +21,7 @@ st.title("Broth Volume Calculator")
 st.markdown("**Note:** Optical density at 600nm value is optional. The other two are required.")
 
 optical_density = st.number_input("Optical density at 600nm:", min_value=0.0, step=0.001)
-cells_per_ml = st.number_input("Cells per ml:", min_value=0.0, step=10.0)
+#cells_per_ml = st.number_input("Cells per ml:", min_value=0.0, step=10.0)
 desired_cells = st.number_input("Desired number of cells:", min_value=0.0, step=1.0)
 
 # Unit selection
