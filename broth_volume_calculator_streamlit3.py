@@ -16,13 +16,13 @@ def calculate_broth_volume(optical_density, cells_per_ml, desired_cells):
 # Streamlit UI
 st.title("Broth Volume Calculator")
 
-optical_density = st.number_input("Optical density at 600nm:", min_value=0.0, step=0.00001, format="%.5f")
+optical_density = st.number_input("Optical density at 600nm:", min_value=0.0, step=0.001, format="%.5f")
 cells_per_ml = st.number_input("Cells per ml:", min_value=0.0, step=10.0, format="%.10f")
 desired_cells = st.number_input("Desired number of cells:", min_value=0.0, step=1.0, format="%.10f")
 
 if st.button("Calculate"):
     result = calculate_broth_volume(optical_density, cells_per_ml, desired_cells)
     if result is not None:
-        st.success(f"Volume of broth to be added (ml): {result:.2f}")
+        st.success(f"Volume of broth to be added (ml): {result:.3f}")
     else:
         st.error("Please enter valid numbers.")
