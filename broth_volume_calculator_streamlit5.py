@@ -18,9 +18,6 @@ def calculate_broth_volume(optical_density, desired_cells):
 # Streamlit UI
 st.title("Broth Volume Calculator")
 
-# Adding the note
-st.markdown("**Note:** Optical density at 600nm value is optional. The other two are required.")
-
 # Select number of samples
 num_samples = st.number_input("Select number of samples:", min_value=1, max_value=15, step=1)
 
