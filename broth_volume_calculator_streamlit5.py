@@ -25,12 +25,16 @@ num_samples = st.number_input("Select number of samples:", min_value=1, max_valu
 optical_density_list = []
 desired_cells_list = []
 
-# Generate input fields for each sample
-for i in range(num_samples):
-    st.subheader(f"Sample {i+1}")
-    optical_density = st.number_input(f"Optical density at 600nm for sample {i+1} (optional):", min_value=0.0, step=0.001, format="%.5f")
-    desired_cells = st.number_input(f"Desired number of cells for sample {i+1}:", min_value=0.0, step=1.0)
+# Create a table-like structure for inputs
+st.subheader("Input Values")
+input_columns = st.columns([1, 1])
+input_columns[0].markdown("**Optical Density at 600nm**")
+input_columns[1].markdown("**Desired Number of Cells**")
 
+for i in range(num_samples):
+    cols = st.columns([1, 1])
+    optical_density = cols[0].number_input(f"Optical density for sample {i+1}", min_value=0.0, step=0.001, format="%.5f", key=f"od_{i}")
+    desired_cells = cols[1].number_input(f"Desired cells for sample {i+1}", min_value=0.0, step=1.0, key=f"cells_{i}")
     optical_density_list.append(optical_density)
     desired_cells_list.append(desired_cells)
 
@@ -53,4 +57,5 @@ if st.button("Calculate"):
 
     # Display results in a table
     results_df = pd.DataFrame(results)
+    st.subheader("Results")
     st.table(results_df)
