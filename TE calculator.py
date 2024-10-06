@@ -12,13 +12,23 @@ def calculate_transformation_efficiency(colonies, recovery_volume_ml, dna_ug, vo
 def main():
     st.title("Transformation Efficiency Calculator")
     
-    # Input fields for user data
-    colonies = st.number_input('Total colonies on the plate:', min_value=0, value=0)
-    recovery_volume_ml = st.number_input('Final volume after recovery (in mL):', min_value=0.0, value=1.0)
-    dna_ug = st.number_input('Amount of DNA added (in µg):', min_value=0.0, value=0.1)
-    volume_plated_ml = st.number_input('Volume plated (in mL):', min_value=0.0, value=0.1)
+    st.write("""
+    This app calculates the transformation efficiency using the formula:
     
-    # Calculate transformation efficiency when button is clicked
+    \[
+    TE = \frac{{\text{{colonies}} \times \text{{recovery volume (mL)}}}}{{\text{{DNA added (µg)}} \times \text{{volume plated (mL)}}}}
+    \]
+    
+    **Transformation Efficiency** is measured in colonies per microgram of DNA (**colonies/µg DNA**).
+    """)
+    
+    # Input fields
+    colonies = st.number_input('Total colonies on the plate', min_value=1, value=1, step=1)
+    recovery_volume_ml = st.number_input('Final volume after recovery (in mL)', min_value=0.0, value=1.0, format="%.2f")
+    dna_ug = st.number_input('Amount of DNA added (in µg)', min_value=0.0, value=0.01, format="%.2f")
+    volume_plated_ml = st.number_input('Volume plated (in mL)', min_value=0.0, value=0.1, format="%.2f")
+    
+    # Calculate button
     if st.button('Calculate'):
         try:
             te = calculate_transformation_efficiency(colonies, recovery_volume_ml, dna_ug, volume_plated_ml)
